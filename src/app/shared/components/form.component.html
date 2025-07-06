@@ -1,0 +1,72 @@
+<section id="form" class="form-section">
+  <h2>Evaluación de Condiciones Laborales</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Edad -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Edad</mat-label>
+      <input matInput type="number" formControlName="edad" min="14" />
+    </mat-form-field>
+
+    <!-- Sexo -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo">
+        <mat-option value="Hombre">Hombre</mat-option>
+        <mat-option value="Mujer">Mujer</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Nivel educativo -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nivel educativo alcanzado</mat-label>
+      <mat-select formControlName="nivelEducativo">
+        <mat-option value="Sin primaria">Sin primaria</mat-option>
+        <mat-option value="Primaria">Primaria</mat-option>
+        <mat-option value="Secundaria">Secundaria</mat-option>
+        <mat-option value="Técnico">Técnico</mat-option>
+        <mat-option value="Universitario">Universitario</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Área de residencia -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Área de residencia</mat-label>
+      <mat-select formControlName="areaResidencia">
+        <mat-option value="Urbano">Urbano</mat-option>
+        <mat-option value="Rural">Rural</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Categoría ocupacional -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Categoría ocupacional</mat-label>
+      <mat-select formControlName="categoriaOcupacional">
+        <mat-option value="Independiente">Independiente</mat-option>
+        <mat-option value="Empleador">Empleador</mat-option>
+        <mat-option value="Dependiente">Dependiente</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Ingreso mensual -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ingreso mensual por ocupación principal (S/)</mat-label>
+      <input matInput type="number" formControlName="ingresoMensual" />
+    </mat-form-field>
+
+    <!-- Horas trabajadas semanalmente -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Horas trabajadas semanalmente</mat-label>
+      <input matInput type="number" formControlName="horasSemanales" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      Enviar
+    </button>
+  </form>
+
+  <div *ngIf="respuesta" class="respuesta">
+    <mat-icon color="primary">check_circle</mat-icon>
+    {{ respuesta }}
+  </div>
+</section>

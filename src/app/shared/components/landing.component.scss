@@ -1,0 +1,53 @@
+.landing {
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #f5f7fa, #e0f7fa);
+  color: #333;
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #00796b;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      text-align: left;
+    }
+
+    .image {
+      max-width: 400px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .text {
+      flex: 1;
+
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+    a {
+      margin-top: 1rem;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.form-section {
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .respuesta {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    color: #2e7d32;
+  }
+}
+button[disabled] {
+  background-color: #b1b1b1 !important; // gris claro visible
+  color: #ffffff !important;            // gris oscuro para texto
+  opacity: 1 !important;                // anula la opacidad por defecto
+  cursor: not-allowed;
+}
