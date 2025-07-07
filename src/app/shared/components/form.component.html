@@ -1,15 +1,15 @@
 <section id="form" class="form-section">
-  <h2>Evaluación de Condiciones Laborales</h2>
+  <h1>Evaluación de Condiciones Laborales</h1>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <!-- Edad -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Edad</mat-label>
       <input matInput type="number" formControlName="edad" min="14" />
     </mat-form-field>
 
     <!-- Sexo -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Sexo</mat-label>
       <mat-select formControlName="sexo">
         <mat-option value="Hombre">Hombre</mat-option>
@@ -18,55 +18,74 @@
     </mat-form-field>
 
     <!-- Nivel educativo -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Nivel educativo alcanzado</mat-label>
-      <mat-select formControlName="nivelEducativo">
-        <mat-option value="Sin primaria">Sin primaria</mat-option>
-        <mat-option value="Primaria">Primaria</mat-option>
-        <mat-option value="Secundaria">Secundaria</mat-option>
-        <mat-option value="Técnico">Técnico</mat-option>
-        <mat-option value="Universitario">Universitario</mat-option>
+      <mat-select formControlName="nivel_educativo">
+        <mat-option value="Sin nivel">Sin nivel</mat-option>
+        <mat-option value="Educación Inicial">Educación Inicial</mat-option>
+        <mat-option value="Básica especial">Básica especial</mat-option>
+        <mat-option value="Primaria incompleta">Primaria incompleta</mat-option>
+        <mat-option value="Primaria completa">Primaria completa</mat-option>
+        <mat-option value="Secundaria incompleta">Secundaria incompleta</mat-option>
+        <mat-option value="Secundaria completa">Secundaria completa</mat-option>
+        <mat-option value="Superior no universitaria incompleta">Superior no universitaria incompleta</mat-option>
+        <mat-option value="Superior no universitaria completa">Superior no universitaria completa</mat-option>
+        <mat-option value="Superior universitaria incompleta">Superior universitaria incompleta</mat-option>
+        <mat-option value="Superior universitaria completa">Superior universitaria completa</mat-option>
+        <mat-option value="Maestría/Doctorado">Maestría/Doctorado</mat-option>
       </mat-select>
     </mat-form-field>
 
     <!-- Área de residencia -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Área de residencia</mat-label>
-      <mat-select formControlName="areaResidencia">
+      <mat-select formControlName="area">
         <mat-option value="Urbano">Urbano</mat-option>
         <mat-option value="Rural">Rural</mat-option>
       </mat-select>
     </mat-form-field>
 
     <!-- Categoría ocupacional -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Categoría ocupacional</mat-label>
-      <mat-select formControlName="categoriaOcupacional">
-        <mat-option value="Independiente">Independiente</mat-option>
-        <mat-option value="Empleador">Empleador</mat-option>
-        <mat-option value="Dependiente">Dependiente</mat-option>
+      <mat-select formControlName="categoria_ocupacional">
+        <mat-option value="Ayudante en un negocio de la familia">Ayudante en un negocio de la familia</mat-option>
+        <mat-option value="Practicante no remunerado">Practicante no remunerado</mat-option>
+        <mat-option value="Aprendiz/practicante remunerado">Aprendiz/practicante remunerado</mat-option>
+        <mat-option value="Trabajador del hogar">Trabajador del hogar</mat-option>
+        <mat-option value="Ayudante en un negocio de la familia de otro hogar">Ayudante en un negocio de la familia de otro hogar</mat-option>
+        <mat-option value="Empleado u obrero">Empleado u obrero</mat-option>
+        <mat-option value="Trabajador independiente">Trabajador independiente</mat-option>
+        <mat-option value="Empleador o patrono">Empleador o patrono</mat-option>
       </mat-select>
     </mat-form-field>
 
     <!-- Ingreso mensual -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Ingreso mensual por ocupación principal (S/)</mat-label>
-      <input matInput type="number" formControlName="ingresoMensual" />
+      <input matInput type="number" formControlName="ingreso_mensual" />
     </mat-form-field>
 
     <!-- Horas trabajadas semanalmente -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill">
       <mat-label>Horas trabajadas semanalmente</mat-label>
-      <input matInput type="number" formControlName="horasSemanales" />
+      <input matInput type="number" formControlName="horas_trabajadas" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-      Enviar
-    </button>
+    <!-- Botón ocupa una fila entera -->
+    <div class="form-button">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Enviar
+      </button>
+    </div>
   </form>
 
-  <div *ngIf="respuesta" class="respuesta">
-    <mat-icon color="primary">check_circle</mat-icon>
-    {{ respuesta }}
-  </div>
+  <mat-card *ngIf="respuesta !== null" [ngClass]="{ 'informal': respuesta < 0.5, 'formal': respuesta >= 0.5 }"
+    class="respuesta-card">
+    <mat-card-content>
+      <mat-icon>{{ respuesta < 0.5 ? 'warning' : 'check_circle' }}</mat-icon>
+      En base a los datos proporcionados, se estima una
+      <strong>{{ (respuesta * 100) | number: '1.0-2' }}%</strong> de formalidad.
+    </mat-card-content>
+  </mat-card>
 </section>

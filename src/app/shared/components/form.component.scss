@@ -1,30 +1,54 @@
 .form-section {
-  padding: 4rem 2rem;
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
 
-  h2 {
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-button {
+    grid-column: span 2;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
 
-  .full-width {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .respuesta {
+  .respuesta-card {
     margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-weight: bold;
-    color: #2e7d32;
+    gap: 1rem;
+
+    mat-icon {
+      font-size: 24px;
+    }
+
+    &.informal {
+      background-color: #ffebee;
+      border-left: 6px solid #e53935;
+      color: #b71c1c;
+    }
+
+    &.formal {
+      background-color: #e8f5e9;
+      border-left: 6px solid #43a047;
+      color: #1b5e20;
+    }
   }
+
+  mat-form-field {
+    width: 100%;
+  }
+
 }
+
 button[disabled] {
   background-color: #b1b1b1 !important; // gris claro visible
-  color: #ffffff !important;            // gris oscuro para texto
-  opacity: 1 !important;                // anula la opacidad por defecto
+  color: #ffffff !important; // gris oscuro para texto
+  opacity: 1 !important; // anula la opacidad por defecto
   cursor: not-allowed;
 }
