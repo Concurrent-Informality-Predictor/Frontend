@@ -20,4 +20,14 @@ export class ApiService {
   getResponse2(data: Formulario): string {
     return 'Informal';
   }
+  getBulkResponse(data: Formulario[]): Observable<RespuestaInformalidad[]> {
+    return this.http.post<RespuestaInformalidad[]>('url/bulk', data);
+  }
+  getBulkResponse2(n: number): RespuestaInformalidad[] {
+    const respuestas: RespuestaInformalidad[] = [];
+    for (let i = 0; i < n; i++) {
+      respuestas.push({ mensaje: 'Informal' });
+    }
+    return respuestas;
+  }
 }

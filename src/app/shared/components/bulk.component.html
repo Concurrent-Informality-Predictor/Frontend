@@ -1,0 +1,15 @@
+<section class="bulk-section">
+  <h2>Predicción masiva</h2>
+<input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+<button mat-raised-button color="primary" (click)="procesarArchivo()" [disabled]="!datos.length">
+  Enviar al backend
+</button> 
+
+<div *ngIf="respuestas.length">
+  <h3>Resultados:</h3>
+  <div *ngFor="let r of respuestas; index as i">
+    Fila {{ i + 1 }}: {{ r.mensaje }}
+  </div>
+</div>
+
+</section>
